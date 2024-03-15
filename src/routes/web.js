@@ -14,6 +14,7 @@ const initWebRouter = (app) => {
       router.get("/", homeController.handleHelloController) // ko cần mở hoặc vì là tham chiếu chỉ cần gọi hàm 
       router.get("/user-page", homeController.handleUserPage) // get 
       router.post("/users/create-user", homeController.handleCreateNewUser)
+      router.post("/delete/user/:id", homeController.handleDeleteUser)
 
 
 
