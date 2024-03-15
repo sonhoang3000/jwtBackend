@@ -5,8 +5,11 @@ const handleHelloController = (req, res) => {
       return res.render('home.ejs', { name })
 }
 
-const handleUserPage = (req, res) => {
-      return res.render('user.ejs')
+const handleUserPage = async (req, res) => {
+      //model => get data from database
+      let userList = await userService.getUserList();
+      //cheeck userList Promise { <pending> } nếu bạn bị pending hãy dùng async await
+      return res.render('user.ejs', { userList })
 }
 
 const handleCreateNewUser = (req, res) => {
@@ -15,7 +18,6 @@ const handleCreateNewUser = (req, res) => {
       let usernameController = req.body.userName;
 
       // userService.createNewUser(emailController, passwordController, usernameController);
-      userService.getUserList();
 
       return res.send("Haha create new user,")
 }
